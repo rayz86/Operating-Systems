@@ -6,7 +6,8 @@
 #define MAX 5
 using namespace std;
 void best();
-int process[MAX], buffer[MAX], n;
+int buffer[MAX]; //{200,100,150,60}
+int process[MAX]; // {80,200,50,120}
 int n=4;
 string op[MAX];
 

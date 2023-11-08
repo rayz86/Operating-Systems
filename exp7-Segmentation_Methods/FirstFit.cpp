@@ -6,8 +6,8 @@
 #define MAX 5
 using namespace std;
 void first();
-int buffer[MAX]={200,100,150,60};
-int process[MAX]={80,200,50,120};
+int buffer[MAX]; //{200,100,150,60}
+int process[MAX]; // {80,200,50,120}
 int n=4;
 
 int main()
