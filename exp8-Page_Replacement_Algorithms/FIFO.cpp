@@ -3,43 +3,54 @@
 #include<iostream>
 using namespace std;
 
-int main()
-{
-    int ram_size, n, pages[20], ram[20], page_found, replacement_index=0, page_faults=0;
-    cout<<"Enter the size of RAM :";
-    cin>>ram_size;
-    cout<<"Enter the no of pages :";
-    cin>>n;
+#include <iostream>
+#define MAX 100
 
-    cout<<"Enter the pages:";
-    for(int i=0;i<n;i++)
-    {
-        cin>>pages[i];   
-    }
-    for(int j=0;j<n;j++)
-    {
-        ram[j];
-    }
+using namespace std;
 
-    for(int i=0;i<n;i++)
-    {
-        page_found=0;
-        for(int j=0;j<ram_size;j++)
-        {
-            if(pages[i]==ram[j])
-                page_found=1;
+int main() {
+    int page_found = 0;
+    int page_faults = 0;
+    int ram_size;
+    int no_of_pages;
+    int replacement_index = 0;
+
+    int ram[MAX];
+    int page_reference[MAX];
+
+    cout << "Enter the size of RAM : ";
+    cin >> ram_size;
+
+    cout << "Enter no of pages : ";
+    cin >> no_of_pages;
+
+    cout << "Enter the pages : ";
+    for(int i=0; i<no_of_pages; i++) {
+        cin >> page_reference[i];
+    }
+    for(int j=0; j<ram_size; j++) {
+        ram[j] = -1;
+    }
+    for(int i=0; i<no_of_pages; i++) {
+        page_found = 0;
+        for(int j=0; j<ram_size; j++) {
+            if(page_reference[i] == ram[j]) {
+                page_found = 1;
+            }
         }
-        if(!page_found)
-        {
+        if(!page_found) {
             page_faults++;
-            ram[replacement_index]=pages[i];
-            replacement_index=(replacement_index+1)%ram_size;
+            ram[replacement_index] = page_reference[i];
+            replacement_index = (replacement_index + 1) % ram_size;
         }
     }
-    cout<<"Total Page Faults: "<<page_faults;
+    cout<< "Page Faults : " << page_faults;
+    return 0;
 }
+// 21
+// 3 4 3 2 1 2 6 4 5 7 4 1 3 7 7 5 4 1 3 8 5
 
-// Enter the size of RAM :3
-// Enter the no of pages :12
-// Enter the pages:0 1 2 3 0 1 4 0 1 2 3 4
-// Total Page Faults: 9
+// Enter the size of RAM : 3
+// Enter no of pages : 21
+// Enter the pages : 3 4 3 2 1 2 6 4 5 7 4 1 3 7 7 5 4 1 3 8 5
+// Page Faults : 16

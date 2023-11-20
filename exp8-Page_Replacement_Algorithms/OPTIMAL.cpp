@@ -72,7 +72,7 @@ int main()
             ram[replacement_index] = page_reference[i];
         }
     }
-    cout << endl << "Page Faults : " << page_faults;
+    cout<< "Page Faults : " << page_faults;
     return 0;
 }
 
